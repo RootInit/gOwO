@@ -125,7 +125,7 @@ func showHelp(errMsg string) {
 			"\t-h, --help\t\tshow this message\n" +
 			"\t-s, --stats\t\tdry run showing replacement statistics\n" +
 			"\t-i, --infile [PATH]\tload text from file\n" +
-			"\t-o, --outfile [PATH]\toutput to file" +
+			"\t-o, --outfile [PATH]\toutput to file\n" +
 			"If no text is provided as an argument read from standard input.\n" +
 			"Exit status is 0 if no error occurs, 1 otherwise.")
 }
