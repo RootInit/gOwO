@@ -2,7 +2,9 @@ package owo
 
 import (
 	"bufio"
+	"bytes"
 	"io"
+	"strings"
 )
 
 type Owofier struct {
@@ -109,6 +111,16 @@ func ConvertReplacements(r map[string]string) map[string][]byte {
 	return replacements
 }
 
+func (o *Owofier) TranslateString(input string) (string, error) {
+	r := strings.NewReader(input)
+	w := &bytes.Buffer{}
+	err := o.Translate(r, w)
+	if err != nil {
+		return "", err
+	}
+	return w.String(), nil
+}
+
 func (o *Owofier) Translate(r io.Reader, w io.Writer) error {
 	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
@@ -151,6 +163,11 @@ func (o *Owofier) Translate(r io.Reader, w io.Writer) error {
 		}
 	}
 	return nil
+}
+
+func (o *Owofier) StatsString(input string) map[string]int {
+	r := strings.NewReader(input)
+	return o.Stats(r)
 }
 
 func (o *Owofier) Stats(r io.Reader) map[string]int {
