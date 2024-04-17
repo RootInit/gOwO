@@ -31,7 +31,7 @@ func main() {
 	owo := gowo.DefaultOwofier()
 	// Setup stats map if needed
 	if args.statsEnabled {
-		stats := owo.Translate(input)
+		stats := owo.Stats(input)
 		fmt.Print("Statistics:\n")
 		for key, count := range stats {
 			// Match  -  replacement    used Num times
@@ -39,7 +39,7 @@ func main() {
 				key, owo.Replacements[key], count)
 		}
 	} else {
-		err := gowo.Owoify(input, output)
+		err := owo.Translate(input, output)
 		if err != nil {
 			os.Exit(1)
 		}
